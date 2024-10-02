@@ -30,7 +30,7 @@ def generate_message(name, info, month):
 
     # Prep GPT prompt
     prompt = f"""
-    You are an assistant that helps generate personalized tutoring update messages. Below is the student's information and a log of classes for the current month.
+    You are an assistant that helps generate personalized tutoring update messages to parents. Below is the student's information and a log of classes for the current month.
 
     Student Name: {name}
     Student Info: {info}
