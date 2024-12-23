@@ -8,9 +8,13 @@
 # # 0 3 * * 0 ~/.scripts/cleanup-downloads.sh # Adjust this section accordingly
 
 DOWNLOADS_DIR="/Users/leesamuel423/Downloads"
+LOG_DIR="/Users/leesamuel423"
+LOG_FILE="$LOG_DIR/cron_logs.txt"
 
-exec 1>"/Users/leesamuel423/Downloads/cleanup_log.txt" 2>&1
-echo "Starting cleanup at $(date)"
+mkdir -p "$LOG_DIR"
+exec 1>>"$LOG_FILE" 2>&1
+
+echo "=== Starting cleanup at $(date) ==="
 
 # Check if the downloads directory exists
 if [ ! -d "$DOWNLOADS_DIR" ]; then
@@ -48,4 +52,5 @@ done
 echo "Removing empty directories..."
 find "$DOWNLOADS_DIR" -type d -empty -not -path "$DOWNLOADS_DIR" -print -delete
 
-echo "Cleanup completed!"
+echo "=== Cleanup completed at $(date) ==="
+echo "----------------------------------------"
