@@ -7,15 +7,6 @@
 # # Schedule: Daily @ 11:55 PM
 # # 55 23 * * * ~/.scripts/notes-commit.sh # Adjust this section accordingly
 
-#!/bin/bash
-# back up updates to notes directory every day
-# Make a cron job with following directions:
-# - Replace `leesamuel423` with your username
-# - `crontab -e` and add the below lines
-# # Task: Commit + Push updates to `notes/` EOD
-# # Schedule: Daily @ 11:55 PM
-# # 55 23 * * * ~/.scripts/notes-commit.sh # Adjust this section accordingly
-
 NOTES_DIR="/Users/leesamuel423/notes"
 LOG_DIR="/Users/leesamuel423"
 LOG_FILE="$LOG_DIR/cron_logs.txt"
