@@ -1,14 +1,16 @@
 #!/bin/bash
 # back up updates to notes directory every day
+# - Replace `samuellee` with your username
+
 # Make a cron job with following directions:
-# - Replace `leesamuel423` with your username
 # - `crontab -e` and add the below lines
 # # Task: Commit + Push updates to `notes/` EOD
 # # Schedule: Daily @ 11:55 PM
-# # 55 23 * * * ~/.scripts/notes-commit.sh # Adjust this section accordingly
+# HOME=/Users/samuellee
+# 55 23 * * * ~/scripts/update-notes.sh
 
-NOTES_DIR="/Users/leesamuel423/notes"
-LOG_DIR="/Users/leesamuel423"
+NOTES_DIR="/Users/samuellee/notes"
+LOG_DIR="/Users/samuellee"
 LOG_FILE="$LOG_DIR/cron_logs.txt"
 
 mkdir -p "$LOG_DIR"
@@ -29,15 +31,13 @@ if [ ! -d ".git" ]; then
   exit 1
 fi
 
-# Check for uncommitted changes
-if git status --porcelain | grep -q '^[MADRC]'; then
+# Check for any changes
+if [ "$(git status --porcelain)" != "" ]; then
   CURRENT_DATE=$(date "+%b %d, %Y")
   echo "Changes detected, proceeding with commit"
-
   git add .
   if git commit -m "update notes ${CURRENT_DATE}"; then
     echo "Successfully committed changes with date: ${CURRENT_DATE}"
-
     # Push changes
     if git push; then
       echo "Successfully pushed changes"

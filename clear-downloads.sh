@@ -7,8 +7,8 @@
 # # Schedule: Weekly on Sunday at 3 AM
 # # 0 3 * * 0 ~/.scripts/cleanup-downloads.sh # Adjust this section accordingly
 
-DOWNLOADS_DIR="/Users/leesamuel423/Downloads"
-LOG_DIR="/Users/leesamuel423"
+DOWNLOADS_DIR="/Users/samuellee/Downloads"
+LOG_DIR="/Users/samuellee"
 LOG_FILE="$LOG_DIR/cron_logs.txt"
 
 mkdir -p "$LOG_DIR"
